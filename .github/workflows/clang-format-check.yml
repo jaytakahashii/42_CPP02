@@ -1,10 +1,16 @@
 name: Clang Format Check
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   format-check:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path:
+          - "ex00/src"
+          - "ex00/include"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
