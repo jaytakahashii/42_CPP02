@@ -10,13 +10,15 @@ jobs:
         path:
           - "ex00/src"
           - "ex00/include"
-
+          - "ex01/src"
+          - "ex01/include"
+          - "ex02/src"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: CPP formatting check with clang-format
-        uses: jaytakahashii/clang-format-check@v2
+        uses: jaytakahashii/clang-format-check@v3
         with:
-          path: "src"
+          path: "${{ matrix.path }}"
           style: "Google"
