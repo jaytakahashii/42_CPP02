@@ -5,20 +5,17 @@ on: [pull_request]
 jobs:
   format-check:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        path:
-          - "ex00/src"
-          - "ex00/include"
-          - "ex01/src"
-          - "ex01/include"
-          - "ex02/src"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Find C++ source files
+        id: find_files
+        run: echo "files=$(find . -type f -name '*.cpp' -o -name '*.hpp' | tr '\n' ' ')" >> $GITHUB_ENV
+
       - name: CPP formatting check with clang-format
         uses: jaytakahashii/clang-format-check@v3
         with:
-          path: "${{ matrix.path }}"
+          path: "${{ env.files }}"
           style: "Google"
