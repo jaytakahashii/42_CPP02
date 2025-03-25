@@ -5,17 +5,17 @@ on: [pull_request]
 jobs:
   format-check:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        path:
-          - find . -name "*.cpp" -o -name "*.h"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Find C++ files
+        id: find-files
+        run: echo "::set-output name=files::$(find . -name '*.cpp' -o -name '*.h')"
+
       - name: CPP formatting check with clang-format
         uses: jaytakahashii/clang-format-check@v3
         with:
-          path: "${{ matrix.path }}"
+          path: ${{ steps.find-files.outputs.files }}
           style: "Google"
