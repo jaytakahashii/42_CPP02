@@ -3,37 +3,18 @@ name: Clang Format Check
 on: [pull_request]
 
 jobs:
-  find-CPP-files:
-    runs-on: ubuntu-latest
-    outputs:
-      paths: ${{ steps.set-matrix.outputs.paths }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Find directories containing C++ files
-        id: set-matrix
-        run: |
-          FILES=$(find . -type f \( -name '*.cpp' -o -name '*.hpp' \) | jq -R -s -c 'split("\n")[:-1]')
-          if [[ "$FILES" == "[]" ]]; then
-            echo "❌ No C++ files found."
-            exit 1
-          fi
-          echo "$FILES" >> "$GITHUB_OUTPUT"
-          echo "✅ Directories found: $FILES"
-
   format-check:
-    needs: find-CPP-files
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        path: ${{ fromJson(needs.find-CPP-files.outputs.paths) }}
+        path:
+          - find . -name "*.cpp" -o -name "*.h"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Clang Format Check
+      - name: CPP formatting check with clang-format
         uses: jaytakahashii/clang-format-check@v3
         with:
           path: "${{ matrix.path }}"
