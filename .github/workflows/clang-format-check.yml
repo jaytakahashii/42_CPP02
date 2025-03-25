@@ -10,11 +10,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Find C++ source files
-        id: find_files
-        run: echo "files=$(find . -type f -name '*.cpp' -o -name '*.hpp' | tr '\n' ' ')"
+      - name: Find C++ files
+        run: |
+          FILES=$(find . -type f \( -name '*.cpp' -o -name '*.hpp' \) | tr '\n' ' ')
+          if [[ -z "$FILES" ]]; then
+            echo "❌ No C++ files found."
+            exit 1
+          fi
+          echo "files=$FILES" >> "$GITHUB_ENV"
+          echo "✅ C++ files found: $FILES"
 
-      - name: CPP formatting check with clang-format
+      - name: Run Clang Format Check
         uses: jaytakahashii/clang-format-check@v3
         with:
           path: "${{ env.files }}"
