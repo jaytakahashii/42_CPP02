@@ -1,0 +1,8 @@
+# .clang-format
+
+BasedOnStyle: Google
+ColumnLimit: 80
+
+AllowShortIfStatementsOnASingleLine: false # not allow if statements on a single line
+AllowShortLoopsOnASingleLine: false # not allow loops on a single line
+AllowShortFunctionsOnASingleLine: None # not allow functions on a single line
