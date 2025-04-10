@@ -9,12 +9,12 @@ class Fixed {
   static const int _fractionalBits = 8;
 
  public:
-  Fixed();                               // default constructor
-  Fixed(const int intValue);             // constructor with int
-  Fixed(const float floatValue);         // constructor with float
-  Fixed(const Fixed &other);             // copy constructor
-  Fixed &operator=(const Fixed &other);  // assignation operator
-  ~Fixed();                              // destructor
+  Fixed();
+  Fixed(const int intValue);      // constructor with int
+  Fixed(const float floatValue);  // constructor with float
+  Fixed(const Fixed &other);
+  Fixed &operator=(const Fixed &other);
+  ~Fixed();
 
   int getRawBits() const;
   void setRawBits(int const raw);

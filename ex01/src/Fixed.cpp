@@ -36,7 +36,7 @@ float Fixed::toFloat() const {
 }
 
 int Fixed::toInt() const {
-  return _value >> _fractionalBits;  // 小数部分を除いて整数に変換
+  return _value >> _fractionalBits;
 }
 
 int Fixed::getRawBits() const {
