@@ -3,6 +3,8 @@
 #include <cmath>
 #include <iostream>
 
+#include "color.hpp"
+
 #ifndef __INT_MIN__
 #define __INT_MIN__ -2147483648
 #endif

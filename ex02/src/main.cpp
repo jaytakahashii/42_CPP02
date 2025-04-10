@@ -1,7 +1,4 @@
-#include <iostream>
-
 #include "Fixed.hpp"
-#include "color.hpp"
 
 int main(void) {
   Fixed a;
