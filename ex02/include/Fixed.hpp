@@ -33,10 +33,10 @@ class Fixed {
   Fixed operator*(const Fixed& other) const;
   Fixed operator/(const Fixed& other) const;
 
-  Fixed& operator++();
-  Fixed operator++(int);
-  Fixed& operator--();
-  Fixed operator--(int);
+  Fixed& operator++();    // ++Fixed
+  Fixed operator++(int);  // Fixed++
+  Fixed& operator--();    // --Fixed
+  Fixed operator--(int);  // Fixed--
 
   static Fixed& min(Fixed& a, Fixed& b);
   static const Fixed& min(const Fixed& a, const Fixed& b);

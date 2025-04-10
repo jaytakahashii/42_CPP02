@@ -12,7 +12,7 @@ Fixed::Fixed(const Fixed& other) {
 
 Fixed& Fixed::operator=(const Fixed& other) {
   if (this != &other) {
-    this->_value = other._value;
+    _value = other._value;
   }
   return *this;
 }
@@ -22,48 +22,48 @@ Fixed::~Fixed() {
 
 // === constructor(int, float) ===
 Fixed::Fixed(const int intValue) {
-  this->_value = intValue << _fractionalBits;
+  _value = intValue << _fractionalBits;
 }
 
 Fixed::Fixed(const float floatValue) {
-  this->_value = roundf(floatValue * (1 << _fractionalBits));
+  _value = roundf(floatValue * (1 << _fractionalBits));
 }
 
 // === member functions ===
 int Fixed::getRawBits() const {
-  return this->_value;
+  return _value;
 }
 
 void Fixed::setRawBits(int const raw) {
-  this->_value = raw;
+  _value = raw;
 }
 
 float Fixed::toFloat() const {
-  return static_cast<float>(this->_value) / (1 << _fractionalBits);
+  return static_cast<float>(_value) / (1 << _fractionalBits);
 }
 
 int Fixed::toInt() const {
-  return this->_value >> _fractionalBits;
+  return _value >> _fractionalBits;
 }
 
 // === difference operators ===
 bool Fixed::operator>(const Fixed& other) const {
-  return this->_value > other._value;
+  return _value > other._value;
 }
 bool Fixed::operator<(const Fixed& other) const {
-  return this->_value < other._value;
+  return _value < other._value;
 }
 bool Fixed::operator>=(const Fixed& other) const {
-  return this->_value >= other._value;
+  return _value >= other._value;
 }
 bool Fixed::operator<=(const Fixed& other) const {
-  return this->_value <= other._value;
+  return _value <= other._value;
 }
 bool Fixed::operator==(const Fixed& other) const {
-  return this->_value == other._value;
+  return _value == other._value;
 }
 bool Fixed::operator!=(const Fixed& other) const {
-  return this->_value != other._value;
+  return _value != other._value;
 }
 
 // === arithmetic operators ===
@@ -89,7 +89,7 @@ Fixed Fixed::operator/(const Fixed& other) const {
 
 // === increment and decrement operators ===
 Fixed& Fixed::operator++() {
-  this->_value += 1;
+  _value += 1;
   return *this;
 }
 
@@ -100,7 +100,7 @@ Fixed Fixed::operator++(int) {
 }
 
 Fixed& Fixed::operator--() {
-  this->_value -= 1;
+  _value -= 1;
   return *this;
 }
 
