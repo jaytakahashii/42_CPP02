@@ -18,5 +18,10 @@ int main() {
   std::cout << "c is " << c.toInt() << " as integer" << std::endl;
   std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
+  std::cout << "a is " << a.getRawBits() << " as raw bits" << std::endl;
+  std::cout << "b is " << b.getRawBits() << " as raw bits" << std::endl;
+  std::cout << "c is " << c.getRawBits() << " as raw bits" << std::endl;
+  std::cout << "d is " << d.getRawBits() << " as raw bits" << std::endl;
+
   return 0;
 }
