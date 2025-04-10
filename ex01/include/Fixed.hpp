@@ -3,18 +3,30 @@
 #include <cmath>
 #include <iostream>
 
+#ifndef __INT_MIN__
+#define __INT_MIN__ -2147483648
+#endif
+
+#ifndef __INT_MAX_FLOAT__
+#define __INT_MAX_FLOAT__ 2147483647.0f
+#endif
+
+#ifndef __INT_MIN_FLOAT__
+#define __INT_MIN_FLOAT__ -2147483648.0f
+#endif
+
 class Fixed {
  private:
   int _value;
   static const int _fractionalBits = 8;
 
  public:
-  Fixed();                               // default constructor
-  Fixed(const int intValue);             // constructor with int
-  Fixed(const float floatValue);         // constructor with float
-  Fixed(const Fixed &other);             // copy constructor
-  Fixed &operator=(const Fixed &other);  // assignation operator
-  ~Fixed();                              // destructor
+  Fixed();
+  Fixed(const int intValue);      // constructor with int
+  Fixed(const float floatValue);  // constructor with float
+  Fixed(const Fixed &other);
+  Fixed &operator=(const Fixed &other);
+  ~Fixed();
 
   int getRawBits() const;
   void setRawBits(int const raw);
