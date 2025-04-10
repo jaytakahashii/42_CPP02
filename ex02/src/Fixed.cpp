@@ -68,23 +68,30 @@ bool Fixed::operator!=(const Fixed& other) const {
 
 // === arithmetic operators ===
 Fixed Fixed::operator+(const Fixed& other) const {
-  return Fixed(this->toFloat() + other.toFloat());
+  Fixed result;
+  result.setRawBits(_value + other._value);
+  return result;
 }
 
 Fixed Fixed::operator-(const Fixed& other) const {
-  return Fixed(this->toFloat() - other.toFloat());
+  Fixed result;
+  result.setRawBits(_value - other._value);
+  return result;
 }
 
 Fixed Fixed::operator*(const Fixed& other) const {
-  return Fixed(this->toFloat() * other.toFloat());
+  Fixed result;
+  long long mul = static_cast<long long>(_value) * other._value;
+  result.setRawBits(static_cast<int>(mul >> _fractionalBits));
+  return result;
 }
 
 Fixed Fixed::operator/(const Fixed& other) const {
-  if (other._value == 0) {
-    std::cerr << "Error: Division by zero" << std::endl;
-    return Fixed();
-  }
-  return Fixed(this->toFloat() / other.toFloat());
+  Fixed result;
+  long long div =
+      (static_cast<long long>(_value) << _fractionalBits) / other._value;
+  result.setRawBits(static_cast<int>(div));
+  return result;
 }
 
 // === increment and decrement operators ===
