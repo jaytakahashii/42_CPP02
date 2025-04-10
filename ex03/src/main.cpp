@@ -14,12 +14,10 @@ void test(Point a, Point b, Point c, Point p) {
 }
 
 int main() {
-  std::cout << BLUE "-----initializing triangle-----" RESET << std::endl;
   Point a(0, 0);
   Point b(10, 0);
   Point c(5, 10);
 
-  std::cout << BLUE "\n-----initializing points-------" RESET << std::endl;
   Point p1(5, 5);    // inside
   Point p2(0, 0);    // apex -> outside
   Point p3(10, 0);   // apex -> outside
@@ -27,7 +25,6 @@ int main() {
   Point p5(5, 2.5);  // inside
   Point p6(5, 0);    // on the edge -> outside
 
-  std::cout << BLUE "\n-----testing points--------------" RESET << std::endl;
   test(a, b, c, p1);
   test(a, b, c, p2);
   test(a, b, c, p3);
