@@ -40,28 +40,24 @@ CUT	= "\033[K"
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS) $(DEPS)
-	@echo $(Y) "$(NAME) src files successfully compiled\n" $(X)
-	@echo $(B) "$(NAME) creating" $(X)
-	@printf $(UP)$(CUT)
-	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@echo $(Y) "src files successfully compiled.\n" $(X)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo $(G) "!! $(NAME) created !!\n" $(X)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp | $(OBJ_DIR)
-	@echo $(Y) "Compiling $<" $(X)
-	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
-	@printf $(UP)$(CUT)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJ_DIR)
-	@echo $(R) "$(OBJ_DIR) has been removed!!" $(X)
+	$(RM) $(OBJ_DIR)
+	@echo $(R) "$(OBJ_DIR) has been removed.\n" $(X)
 
 fclean:
-	@$(RM) $(OBJ_DIR)
-	@$(RM) $(NAME)
-	@echo $(R) "$(NAME) $(OBJ_DIR) has been removed!!" $(X)
+	$(RM) $(OBJ_DIR)
+	$(RM) $(NAME)
+	@echo $(R) "$(NAME) and $(OBJ_DIR) has been removed.\n" $(X)
 
 re: fclean all
 
