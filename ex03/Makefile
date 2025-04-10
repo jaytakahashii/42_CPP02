@@ -15,6 +15,7 @@ DEPS				= $(HEADER) $(MAKEFILE)
 
 CXX					= c++
 CXXFLAGS		= -Wall -Wextra -Werror -std=c++98
+PEDANT			= -pedantic
 
 RM					= rm -rf
 
@@ -60,5 +61,9 @@ fclean:
 	@echo $(R) "$(NAME) and $(OBJ_DIR) has been removed.\n" $(X)
 
 re: fclean all
+
+pedant: CXXFLAGS += $(PEDANT)
+pedant: re
+	@echo $(G) "pedantic mode activated.\n" $(X)
 
 .PHONY: all clean fclean re
