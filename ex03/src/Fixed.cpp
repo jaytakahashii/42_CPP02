@@ -1,7 +1,5 @@
 #include "Fixed.hpp"
 
-#include <cmath>
-
 // === Orthodox Canonical Form ===
 Fixed::Fixed() : _value(0) {
 }
