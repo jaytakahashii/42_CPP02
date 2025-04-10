@@ -20,7 +20,6 @@ Fixed::~Fixed() {
 
 // === constructor(int, float) ===
 Fixed::Fixed(const int intValue) {
-  std::cout << "Int constructor called" << std::endl;
   if (intValue > (__INT_MAX__ >> _fractionalBits) ||
       intValue < (__INT_MIN__ >> _fractionalBits)) {
     throw std::overflow_error(RED "Overflow error" RESET);
@@ -29,7 +28,6 @@ Fixed::Fixed(const int intValue) {
 }
 
 Fixed::Fixed(const float floatValue) {
-  std::cout << "Float constructor called" << std::endl;
   double scaled =
       roundf(static_cast<double>(floatValue) * (1 << _fractionalBits));
   if (scaled > __INT_MAX_FLOAT__ || scaled < __INT_MIN_FLOAT__) {
